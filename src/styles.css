@@ -1,0 +1,130 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Upstream design system — "Deep Water".
+ * Cool navy depths, aqua highlights, crisp ice-white surfaces.
+ * All colors are oklch semantic tokens defined here.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-aqua: var(--aqua);
+  --color-aqua-deep: var(--aqua-deep);
+  --color-depth: var(--depth);
+  --color-foam: var(--foam);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.984 0.008 220);
+  --foreground: oklch(0.24 0.045 252);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.24 0.045 252);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.24 0.045 252);
+  --primary: oklch(0.44 0.135 252);
+  --primary-foreground: oklch(0.985 0.005 220);
+  --secondary: oklch(0.94 0.018 225);
+  --secondary-foreground: oklch(0.3 0.06 252);
+  --muted: oklch(0.945 0.014 224);
+  --muted-foreground: oklch(0.5 0.04 250);
+  --accent: oklch(0.94 0.03 210);
+  --accent-foreground: oklch(0.3 0.06 240);
+  --destructive: oklch(0.577 0.215 27.325);
+  --destructive-foreground: oklch(0.985 0.005 220);
+  --border: oklch(0.91 0.02 230);
+  --input: oklch(0.91 0.02 230);
+  --ring: oklch(0.62 0.12 225);
+  --aqua: oklch(0.78 0.11 200);
+  --aqua-deep: oklch(0.58 0.12 215);
+  --depth: oklch(0.28 0.075 255);
+  --foam: oklch(0.96 0.02 205);
+  --success: oklch(0.62 0.14 155);
+  --success-foreground: oklch(0.985 0.005 220);
+  --warning: oklch(0.78 0.14 75);
+  --warning-foreground: oklch(0.28 0.06 75);
+  --chart-1: oklch(0.44 0.135 252);
+  --chart-2: oklch(0.58 0.12 215);
+  --chart-3: oklch(0.78 0.11 200);
+  --chart-4: oklch(0.62 0.14 155);
+  --chart-5: oklch(0.78 0.14 75);
+  --sidebar: oklch(0.984 0.008 220);
+  --sidebar-foreground: oklch(0.24 0.045 252);
+  --sidebar-primary: oklch(0.44 0.135 252);
+  --sidebar-primary-foreground: oklch(0.985 0.005 220);
+  --sidebar-accent: oklch(0.94 0.03 210);
+  --sidebar-accent-foreground: oklch(0.3 0.06 240);
+  --sidebar-border: oklch(0.91 0.02 230);
+  --sidebar-ring: oklch(0.62 0.12 225);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+@utility surface-hero {
+  background: linear-gradient(160deg, oklch(0.32 0.09 255) 0%, oklch(0.44 0.135 252) 55%, oklch(0.58 0.12 215) 100%);
+}
+
+@utility surface-foam {
+  background: linear-gradient(180deg, var(--foam), var(--background));
+}
+
+@utility ripple-ring {
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--primary) 12%, transparent),
+    0 12px 40px -18px color-mix(in oklab, var(--depth) 45%, transparent);
+}
+
+@utility wave-mask {
+  mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
+}
+
+.eyebrow{display:inline-flex;align-items:center;border-radius:999px;padding:.42rem .7rem;font-size:.68rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase}.section-title{margin-top:.35rem;font-family:var(--font-display);font-size:clamp(2rem,5vw,3.25rem);font-weight:900;letter-spacing:-.04em;line-height:1.02}.primary-btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;border-radius:.9rem;background:#0f172a;padding:.75rem 1rem;font-size:.875rem;font-weight:800;color:white;box-shadow:0 10px 25px -12px rgba(15,23,42,.45);transition:transform .15s ease,background .15s ease}.primary-btn:hover{transform:translateY(-1px);background:#1e293b}.primary-btn:disabled{cursor:not-allowed;opacity:.55;transform:none}.icon-btn{display:inline-grid;height:2.5rem;width:2.5rem;place-items:center;border-radius:.8rem;border:1px solid #e2e8f0;background:white;color:#475569}.icon-btn:hover{background:#f8fafc}.field{display:grid;gap:.45rem}.field>span{font-size:.76rem;font-weight:800;color:#475569}.field input,.field select,.field textarea{width:100%;border-radius:.85rem;border:1px solid #dbe4ec;background:#fff;padding:.75rem .85rem;font-size:.9rem;outline:none;transition:border .15s,box-shadow .15s}.field textarea{min-height:88px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{border-color:#22d3ee;box-shadow:0 0 0 4px rgba(34,211,238,.12)}.surface-hero{background:linear-gradient(135deg,#0b1f3a 0%,#0b4d72 52%,#087ea4 100%)}
